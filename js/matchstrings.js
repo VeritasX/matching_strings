@@ -3,6 +3,9 @@
  */
 var submit=function (){
  var stringToGet=$('#stringsToLookFor').val(),listOfStringsToSearch = $('#listOfStrings').val(), stringToGetArray, stringToLookThrough, stringToGetObject={}, listOfStringsToSearchObject={}, matches={};
+    function clearOutput() {
+        $('#output').empty();
+    }
     function checkStrings() {
         if(stringToGet !== ''){
             stringToGetArray=stringToGet.split(' ');
@@ -33,7 +36,7 @@ var submit=function (){
                 $('#output').append('<p>' + matches[match] + '</p>')
             }
   }
-
+        clearOutput();
         checkStrings();
         if(stringToGetArray) {
             if(stringToLookThrough) {
