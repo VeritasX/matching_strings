@@ -44,5 +44,6 @@ var submit=function (){
 };
 
 var clearInputs=function(){
-    
+    $('#stringsToLookFor').val('');
+    $('#listOfStrings').val('');
 }
