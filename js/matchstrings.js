@@ -2,7 +2,7 @@
  * Created by aaron on 10/27/2016.
  */
 var submit=function (){
- var stringToGet=$('#stringsToLookFor').val(),listOfStringsToSearch = $('#listOfStrings').val(), stringToGetArray, stringToLookThrough, stringToGetObject={}, listOfStringsToSearchObject={}, matches={};
+ var stringToGet=$('#stringsToLookFor').val(),listOfStringsToSearch = $('#listOfStrings').val(), stringToGetArray, stringToLookThrough, matches={};
     function clearOutput() {
         $('#output').empty();
     }
@@ -14,33 +14,25 @@ var submit=function (){
             stringToLookThrough=listOfStringsToSearch.split(' ');
         }
     }
- function moveTheArrayElementsToObjects(){
-  for(let i = 0; i < stringToGetArray.length; i++){
-    stringToGetObject[stringToGetArray[i]]=stringToGetArray[i];
-  };
-  for(let i = 0; i < stringToLookThrough.length; i++){
-      listOfStringsToSearchObject[stringToLookThrough[i]]=stringToLookThrough[i];
-  }
- }
+
  function checkForMatchesAndPush() {
-     for(let string in listOfStringsToSearchObject){
-         for(let secondString in stringToGetObject){
-             if(listOfStringsToSearchObject[string] === stringToGetObject[secondString]){
-                 matches[stringToGetObject[secondString]]=stringToGetObject[secondString];
+     for(let i=0; i < stringToLookThrough.length; i++){
+         for(let j=0; j < stringToGetArray.length; j++){
+             if(stringToLookThrough[i] === stringToGetArray[j]){
+                 matches[stringToGetArray[j]]=stringToGetArray[j];
              }
          }
      }
  }
   function printObjectsToScreen(){
             for(let match in matches){
-                $('#output').append('<p>' + matches[match] + '</p>')
+                $('#output').append('<p>' + matches[match] + '</p>');
             }
   }
         clearOutput();
         checkStrings();
         if(stringToGetArray) {
             if(stringToLookThrough) {
-                moveTheArrayElementsToObjects();
                 checkForMatchesAndPush();
                 printObjectsToScreen();
             }
@@ -48,6 +40,9 @@ var submit=function (){
             $('#output').append('<p>Please enter a string</p>');
         }
 
-    matches={};
 
 };
+
+var clearInputs=function(){
+    
+}
